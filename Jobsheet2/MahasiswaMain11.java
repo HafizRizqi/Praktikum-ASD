@@ -16,5 +16,9 @@ public class MahasiswaMain11 {
         mhs2.updateIPK(3.30);
         mhs2.tampilkanInformasi();
 
+        Mahasiswa11 mhs3 = new Mahasiswa11("Natsuki Subaru", "2141720154", 3.69,"TI 2B");
+        mhs3.ubahKelas("TI 2A");
+        mhs3.updateIPK(3.80);
+        mhs3.tampilkanInformasi();
     }
 }
