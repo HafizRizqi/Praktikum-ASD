@@ -86,7 +86,5 @@ public class MahasiswaBerprestasi11 {
             System.out.println("Data mahasiswa dengan IPK " + x + " tidak ditemukan"); 
         }
     }
-
-   
         
 }
