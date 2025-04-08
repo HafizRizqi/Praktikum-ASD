@@ -3,7 +3,9 @@ public class MahasiswaDemo11 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         MahasiswaBerprestasi11 list = new MahasiswaBerprestasi11();
-        int jmlMhs = 5;
+        System.out.print("Masukkan Jumlah Mahasiswa: ");
+        int jmlMhs = input.nextInt();
+        input.nextLine(); 
         
         for (int i = 0; i < jmlMhs; i++) {
             System.out.println("Masukkan data mahasiswa ke-" + (i + 1) );
@@ -38,6 +40,5 @@ public class MahasiswaDemo11 {
         list.tampilPosisi(cari, pss2);
         list.tampilDataSearch(cari, pss2);
 
-        
     }
 }
