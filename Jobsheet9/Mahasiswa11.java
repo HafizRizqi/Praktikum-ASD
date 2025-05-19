@@ -4,7 +4,9 @@ public class Mahasiswa11 {
     String kelas;
     int nilai;
 
-    Mahasiswa11() {}
+    Mahasiswa11() {
+        
+    }
 
     Mahasiswa11(String nama, String nim, String kelas) {
         this.nama = nama;
