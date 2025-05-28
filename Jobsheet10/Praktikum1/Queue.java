@@ -39,7 +39,7 @@ public class Queue {
     }
 
     public void print() {
-        if (!isEmpty()) {
+        if (isEmpty()) {
             System.out.print("Queue masih kosong");
         } else {
             int i = front;
