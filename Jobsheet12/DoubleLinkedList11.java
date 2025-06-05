@@ -111,4 +111,134 @@ public class DoubleLinkedList11 {
         return null;
     }
 
+    public void addAt(int index, Mahasiswa11 data) {
+        if (index < 0) {
+            System.out.println("Index tidak valid.");
+            return;
+        }
+        if (index == 0) {
+            addFirst(data);
+        } else {
+            Node11 newNode = new Node11(data);
+            Node11 current = head;
+            for (int i = 0; i < index - 1 && current != null; i++) {
+                current = current.next;
+            }
+            if (current == null) {
+                System.out.println("Index melebihi jumlah elemen, menambahkan di akhir.");
+                addLast(data);
+            } else {
+                newNode.next = current.next;
+                newNode.prev = current;
+                if (current.next != null) {
+                    current.next.prev = newNode;
+                } else {
+                    tail = newNode; 
+                }
+                current.next = newNode;
+            }
+        }
+    }
+
+    public void removeAfter(String keyNim) {
+        if (isEmpty()) {
+        System.out.println("List kosong. Tidak ada yang bisa dihapus.");
+        return;
+    }
+        Node11 current = head;
+
+        // Cari node dengan nim = keyNim
+        while (current != null && !current.data.nim.equals(keyNim)) {
+            current = current.next;
+        }
+        if (current == null) {
+            System.out.println("Node dengan NIM " + keyNim + " tidak ditemukan.");
+            return;
+        }
+
+        // Jika node berikutnya ada, hapus node tersebut
+        if (current.next != null) {
+            Node11 toRemove = current.next;
+            current.next = toRemove.next;
+            if (toRemove.next != null) {
+                toRemove.next.prev = current;
+            } else {
+                tail = current; 
+            }
+            System.out.println("Node setelah NIM " + keyNim + " berhasil dihapus.");
+        } else {
+            System.out.println("Tidak ada node setelah NIM " + keyNim + ".");
+        }
+    }
+
+    public void removeAt(int index) {
+        if (index < 0) {
+            System.out.println("Index tidak valid.");
+            return;
+        }
+        if (isEmpty()) {
+            System.out.println("List Kosong, tidak ada yang dihapus.");
+            return;
+        }
+        if (index == 0) {
+            removeFirst();
+        } else {
+            Node11 current = head;
+            for (int i = 0; i < index && current != null; i++) {
+                current = current.next;
+            }
+            if (current == null) {
+                System.out.println("Index melebihi jumlah elemen, tidak ada yang dihapus.");
+                return;
+            }
+            if (current == tail) {
+                removeLast();
+            } else {
+                current.prev.next = current.next;
+                if (current.next != null) {
+                    current.next.prev = current.prev;
+                }
+            }
+        }
+    }
+
+    public void getFirst() {
+        if (isEmpty()) {
+            System.out.println("List Kosong, tidak ada yang ditampilkan.");
+        } else {
+            head.data.tampil();
+        }
+    }
+    public void getLast() {
+        if (isEmpty()) {
+            System.out.println("List Kosong, tidak ada yang ditampilkan.");
+        } else {
+            tail.data.tampil();
+        }
+    }
+    public int getIndex(String nim) {
+        Node11 current = head;
+        int index = 0;
+        while (current != null) {
+            if (current.data.nama.equals(nim)) {
+                return index; 
+            }
+            current = current.next;
+            index++;
+        }
+        return -1; 
+    }
+
+    public int getSize() {
+        Node11 current = head;
+        int size = 0;
+        while (current != null) {
+            size++;
+            current = current.next;
+        }
+        return size;
+    }
+
+        
+
 }
